@@ -1,6 +1,7 @@
 # svgstore-cli
 
-A command-line tool for combining SVG files into a single sprite sheet using `&lt;symbol&gt;` tags.
+A command-line tool for combining SVG files into a single sprite sheet using
+`<symbol>` tags.
 
 ## Installation
 
