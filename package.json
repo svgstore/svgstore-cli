@@ -1,0 +1,28 @@
+{
+  "name": "svgstore-cli",
+  "version": "1.0.0",
+  "description": "Combine all your SVGs into one using <symbol>",
+  "main": "./bin/svgstore",
+  "bin": {
+      "svgstore": "./bin/svgstore"
+  },
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/svgstore/svgstore-cli.git"
+  },
+  "keywords": [
+    "svg",
+    "svgstore"
+  ],
+  "author": "Darryl Pogue <darryl@dpogue.ca>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/svgstore/svgstore-cli/issues"
+  },
+  "homepage": "https://github.com/svgstore/svgstore-cli#readme",
+  "dependencies": {
+    "glob": "^7.0.5",
+    "svgstore": "^1.1.0"
+  }
+}
