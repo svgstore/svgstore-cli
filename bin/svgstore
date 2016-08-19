@@ -7,6 +7,7 @@ var glob      = require('glob');
 var svgstore  = require('svgstore');
 
 var output = '';
+var prefix = '';
 var inputs = [];
 
 
@@ -17,6 +18,13 @@ for (var i = 2; i < process.argv.length; i++) {
         } else {
             console.error('Missing output filename');
             return -2;
+        }
+    } else if (process.argv[i] === '-p') {
+        if (process.argv[i+1] !== undefined) {
+            prefix = process.argv[++i];
+        } else {
+            console.error('Missing prefix value');
+            return -3;
         }
     } else {
         inputs = inputs.concat(glob.sync(process.argv[i]));
@@ -31,7 +39,7 @@ if (inputs.length == 0) {
 
 // Build up the spritesheet
 var sprites = inputs.reduce(function(sprites, file) {
-    return sprites.add(path.basename(file, '.svg'), fs.readFileSync(file, 'utf8'));
+    return sprites.add(prefix + path.basename(file, '.svg'), fs.readFileSync(file, 'utf8'));
 }, svgstore());
 
 
