@@ -6,7 +6,7 @@ A command-line tool for combining SVG files into a single sprite sheet using
 ## Installation
 
 ```
-npm install --save svgstore-cli
+npm install -g svgstore-cli
 ```
 
 ## Usage
