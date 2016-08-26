@@ -19,6 +19,7 @@ var args = yargs(process.argv.slice(2), argv_options);
 
 var output = args.output;
 var prefix = args.prefix;
+var inline = args.inline;
 var inputs = [];
 
 
@@ -44,5 +45,5 @@ var sprites = inputs.reduce(function(sprites, file) {
 if (output) {
     fs.writeFileSync(output, sprites);
 } else {
-    console.log(sprites.toString());
+    console.log(sprites.toString({ inline: inline }));
 }
