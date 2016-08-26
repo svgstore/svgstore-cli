@@ -4,7 +4,7 @@
   "description": "Combine all your SVGs into one using <symbol>",
   "main": "./bin/svgstore",
   "bin": {
-      "svgstore": "./bin/svgstore"
+    "svgstore": "./bin/svgstore"
   },
   "scripts": {},
   "repository": {
@@ -23,6 +23,7 @@
   "homepage": "https://github.com/svgstore/svgstore-cli#readme",
   "dependencies": {
     "glob": "^7.0.5",
-    "svgstore": "^1.1.0"
+    "svgstore": "^1.1.0",
+    "yargs-parser": "^3.2.0"
   }
 }

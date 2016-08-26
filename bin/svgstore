@@ -5,31 +5,28 @@ var fs        = require('fs');
 var path      = require('path');
 var glob      = require('glob');
 var svgstore  = require('svgstore');
+var yargs     = require('yargs-parser');
 
-var output = '';
-var prefix = '';
+
+// Define the available command-line options
+var argv_options = {
+    alias: { output: ['o'], prefix: ['p'] }
+};
+
+
+// Parse the command-line arguments
+var args = yargs(process.argv.slice(2), argv_options);
+
+var output = args.output;
+var prefix = args.prefix;
 var inputs = [];
 
 
-for (var i = 2; i < process.argv.length; i++) {
-    if (process.argv[i] === '-o') {
-        if (process.argv[i+1] !== undefined) {
-            output = process.argv[++i];
-        } else {
-            console.error('Missing output filename');
-            return -2;
-        }
-    } else if (process.argv[i] === '-p') {
-        if (process.argv[i+1] !== undefined) {
-            prefix = process.argv[++i];
-        } else {
-            console.error('Missing prefix value');
-            return -3;
-        }
-    } else {
-        inputs = inputs.concat(glob.sync(process.argv[i]));
-    }
-}
+// Make an array of all the inputs, expanding globs
+var inputs = args._.reduce(function(total, files) {
+  return total.concat(glob.sync(files));
+}, []);
+
 
 if (inputs.length == 0) {
     console.error('No input files provided');
