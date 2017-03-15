@@ -23,7 +23,7 @@
   "homepage": "https://github.com/svgstore/svgstore-cli#readme",
   "dependencies": {
     "glob": "^7.0.5",
-    "svgstore": "^1.1.0",
-    "yargs-parser": "^3.2.0"
+    "svgstore": "^2.0.2",
+    "yargs-parser": "^5.0.0"
   }
 }
