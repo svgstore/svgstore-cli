@@ -1,3 +1,8 @@
+# v1.3.0
+
+* Updated to svgstore 2.0.2
+* Support `--inline` when outputting to a file
+
 # v1.2.1
 
 * Fix regression with prefix defaulting to "undefined"
