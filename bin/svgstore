@@ -10,7 +10,9 @@ var yargs     = require('yargs-parser');
 
 // Define the available command-line options
 var argv_options = {
-    alias: { output: ['o'], prefix: ['p'] }
+    alias: { inline: ['i'], output: ['o'], prefix: ['p'] },
+    default: { inline: false, output: '', prefix: '' },
+    boolean: ['inline']
 };
 
 
@@ -18,7 +20,7 @@ var argv_options = {
 var args = yargs(process.argv.slice(2), argv_options);
 
 var output = args.output;
-var prefix = args.prefix || '';
+var prefix = args.prefix;
 var inline = args.inline;
 var inputs = [];
 
