@@ -1,3 +1,8 @@
+# v1.3.1
+
+* Set `--inline` as boolean flag
+* Add default values to cli args
+
 # v1.3.0
 
 * Updated to svgstore 2.0.2
