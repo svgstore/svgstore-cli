@@ -45,7 +45,7 @@ var sprites = inputs.reduce(function(sprites, file) {
 
 // Output to file, or to stdout
 if (output) {
-    fs.writeFileSync(output, sprites);
+    fs.writeFileSync(output, sprites.toString({ inline: inline }));
 } else {
     console.log(sprites.toString({ inline: inline }));
 }
