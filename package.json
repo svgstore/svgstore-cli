@@ -24,6 +24,6 @@
   "dependencies": {
     "glob": "^7.1.6",
     "svgstore": "^2.0.3",
-    "yargs-parser": "^18.0.0"
+    "yargs-parser": "^18.1.3"
   }
 }
