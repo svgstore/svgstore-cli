@@ -1,6 +1,6 @@
 {
   "name": "svgstore-cli",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Combine all your SVGs into one using <symbol>",
   "main": "./bin/svgstore",
   "bin": {
