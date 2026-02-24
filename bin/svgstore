@@ -1,14 +1,13 @@
 #!/usr/bin/env node
 'use strict';
 
-var fs        = require('node:fs');
-var path      = require('node:path');
-var util      = require('node:util');
-var svgstore  = require('svgstore');
-
+import fs from 'node:fs';
+import path from 'node:path';
+import util from 'node:util';
+import svgstore from 'svgstore';
 
 // Define the available command-line options
-var argv_options = {
+const argv_options = {
     inline: {
         short: 'i',
         type: 'boolean'
@@ -23,33 +22,29 @@ var argv_options = {
     }
 };
 
-
 // Parse the command-line arguments
-var args = util.parseArgs({ strict: true, allowPositionals: true, options: argv_options });
+const args = util.parseArgs({ strict: true, allowPositionals: true, options: argv_options });
 
-var output = args.values.output;
-var prefix = args.values.prefix;
-var inline = args.values.inline;
-var inputs = [];
-
+const output = args.values.output;
+const prefix = args.values.prefix;
+const inline = args.values.inline;
 
 // Make an array of all the inputs, expanding globs
-var inputs = args.positionals.reduce(function(total, files) {
-  return total.concat(fs.globSync(files));
-}, []);
-
+const inputs = args.positionals.reduce(
+    (total, files) => total.concat(fs.globSync(files)),
+    []
+);
 
 if (inputs.length == 0) {
     console.error('No input files provided');
-    return -1;
+    process.exit(-1);
 }
 
-
 // Build up the spritesheet
-var sprites = inputs.reduce(function(sprites, file) {
-    return sprites.add(prefix + path.basename(file, '.svg'), fs.readFileSync(file, 'utf8'));
-}, svgstore({ inline: inline, renameDefs: true }));
-
+const sprites = inputs.reduce(
+    (sprites, file) => sprites.add(prefix + path.basename(file, '.svg'), fs.readFileSync(file, 'utf8')),
+    svgstore({ inline: inline, renameDefs: true })
+);
 
 // Output to file, or to stdout
 if (output) {
