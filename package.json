@@ -3,10 +3,8 @@
   "version": "3.0.0-dev",
   "type": "module",
   "description": "Combine all your SVGs into one using <symbol>",
-  "main": "./bin/svgstore",
-  "bin": {
-    "svgstore": "./bin/svgstore"
-  },
+  "main": "./svgstore.js",
+  "bin": "./svgstore.js",
   "scripts": {},
   "repository": {
     "type": "git",
