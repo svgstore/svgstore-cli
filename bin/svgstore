@@ -1,33 +1,41 @@
 #!/usr/bin/env node
 'use strict';
 
-var fs        = require('fs');
-var path      = require('path');
-var glob      = require('glob');
+var fs        = require('node:fs');
+var path      = require('node:path');
+var util      = require('node:util');
 var svgstore  = require('svgstore');
-var yargs     = require('yargs-parser');
 
 
 // Define the available command-line options
 var argv_options = {
-    alias: { inline: ['i'], output: ['o'], prefix: ['p'] },
-    default: { inline: false, output: '', prefix: '' },
-    boolean: ['inline']
+    inline: {
+        short: 'i',
+        type: 'boolean'
+    },
+    output: {
+        short: 'o',
+        type: 'string'
+    },
+    prefix: {
+        short: 'p',
+        type: 'string'
+    }
 };
 
 
 // Parse the command-line arguments
-var args = yargs(process.argv.slice(2), argv_options);
+var args = util.parseArgs({ strict: true, allowPositionals: true, options: argv_options });
 
-var output = args.output;
-var prefix = args.prefix;
-var inline = args.inline;
+var output = args.values.output;
+var prefix = args.values.prefix;
+var inline = args.values.inline;
 var inputs = [];
 
 
 // Make an array of all the inputs, expanding globs
-var inputs = args._.reduce(function(total, files) {
-  return total.concat(glob.sync(files));
+var inputs = args.positionals.reduce(function(total, files) {
+  return total.concat(fs.globSync(files));
 }, []);
 
 
