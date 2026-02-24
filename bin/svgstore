@@ -48,7 +48,7 @@ if (inputs.length == 0) {
 // Build up the spritesheet
 var sprites = inputs.reduce(function(sprites, file) {
     return sprites.add(prefix + path.basename(file, '.svg'), fs.readFileSync(file, 'utf8'));
-}, svgstore({ inline: inline }));
+}, svgstore({ inline: inline, renameDefs: true }));
 
 
 // Output to file, or to stdout
